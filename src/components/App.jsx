@@ -1,16 +1,23 @@
+import { GlobalStyle } from 'GlobalStyle';
+import { Layout } from 'Layout';
+import { Filter } from './phoneBook/contactFilter/conatactFilter';
+import { MainTitle, Title } from './phoneBook/contactList/contactList.styled';
+import { FormUser } from './phoneBook/contactForm/contactForm';
+import { ContactList } from './phoneBook/contactList/contactList';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Layout>
+      <MainTitle>Phone book</MainTitle>
+
+      <FormUser />
+
+      <Title>Contacts</Title>
+
+      <Filter />
+
+      <ContactList />
+      <GlobalStyle />
+    </Layout>
   );
 };
