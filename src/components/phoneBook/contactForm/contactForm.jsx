@@ -8,9 +8,9 @@ import {
   Buttons,
 } from './contactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
 import toast, { Toaster } from 'react-hot-toast';
-import { addContacts } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 
 const schema = yup.object().shape({
   name: yup
@@ -29,12 +29,12 @@ const schema = yup.object().shape({
 });
 
 export const FormUser = () => {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    const { name, number } = values;
+    const { name, phone } = values;
 
     if (
       contacts.find(
@@ -46,10 +46,8 @@ export const FormUser = () => {
       return;
     }
 
-    dispatch(addContacts(name, number));
+    dispatch(addContact(name, phone));
 
-    const updatedContacts = [...contacts, { name, number }];
-    window.localStorage.setItem('contacts', JSON.stringify(updatedContacts));
     toast.success(`${name} has succesfully added to your phonebook`);
     resetForm();
   };
