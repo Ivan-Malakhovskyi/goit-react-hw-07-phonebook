@@ -17,10 +17,10 @@ const schema = yup.object().shape({
     .string()
     .matches(/^[a-zA-Zа-яА-Я\s'-]*$/, 'Name should not contain numbers')
     .required(),
-  number: yup
+  phone: yup
     .string()
     .min(5, 'Too short  phone number')
-    .max(10, 'Too long phone number')
+    .max(12, 'Too long phone number')
     .matches(
       /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/,
       'Invalid phone number format'
@@ -46,7 +46,7 @@ export const FormUser = () => {
       return;
     }
 
-    dispatch(addContact(name, phone));
+    dispatch(addContact({ name, phone }));
 
     toast.success(`${name} has succesfully added to your phonebook`);
     resetForm();
@@ -54,7 +54,7 @@ export const FormUser = () => {
 
   return (
     <Main
-      initialValues={{ name: '', number: '' }}
+      initialValues={{ name: '', phone: '' }}
       validationSchema={schema}
       onSubmit={handleSubmit}
     >
@@ -70,10 +70,10 @@ export const FormUser = () => {
           <ErrorMsg name="name" component="p" />
         </LabelForm>
 
-        <LabelForm htmlFor="number">
+        <LabelForm htmlFor="phone">
           Phone number
-          <FieldForm type="tel" name="number" required />
-          <ErrorMsg name="number" component="p" />
+          <FieldForm type="tel" name="phone" required />
+          <ErrorMsg name="phone" component="p" />
         </LabelForm>
         <Buttons type="submit">Add to contact</Buttons>
         <Toaster />

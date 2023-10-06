@@ -5,13 +5,14 @@ import { MainTitle, Title } from './phoneBook/contactList/contactList.styled';
 import { FormUser } from './phoneBook/contactForm/contactForm';
 import { ContactList } from './phoneBook/contactList/contactList';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilteredContacts } from 'redux/selectors';
+import { selectError, selectIsLoading } from 'redux/selectors';
 import { useEffect } from 'react';
 import { serviceContacts } from 'redux/operations';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isLoading, error } = useSelector(selectFilteredContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(serviceContacts());
@@ -25,11 +26,19 @@ export const App = () => {
 
       <Title>Contacts</Title>
 
-      {isLoading && !error && <b>Request in progress...</b>}
-
       <Filter />
 
       <ContactList />
+      {isLoading && !error && (
+        <p
+          style={{
+            textAlign: 'center',
+            fontWeight: 'bold',
+          }}
+        >
+          Request in progress...
+        </p>
+      )}
       <GlobalStyle />
     </Layout>
   );
