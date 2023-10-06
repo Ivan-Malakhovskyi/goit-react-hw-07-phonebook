@@ -1,5 +1,3 @@
-//* Підписка на store здійснюється за допомогою хука useSelector
-
 import { createSelector } from '@reduxjs/toolkit';
 
 export const selectContacts = state => state.contacts.items;

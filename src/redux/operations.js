@@ -1,3 +1,5 @@
+//! middleWears - функція, прослойка - 7 модуль 1 зайняття
+
 import axios from 'axios';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
@@ -52,5 +54,3 @@ export const changeValueFilter = createAsyncThunk(
     }
   }
 );
-
-//* middleWears - функція, прослойка - 7 модуль 1 зайняття
