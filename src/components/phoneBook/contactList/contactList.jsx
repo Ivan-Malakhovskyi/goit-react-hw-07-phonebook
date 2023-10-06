@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { List, ListItem, Topic, ItemButton } from './contactList.styled';
 import { selectFilteredContacts } from 'redux/selectors';
 import { deleteContact } from 'redux/operations';
+import { EmptyMessage } from './emptyMessage';
 
 export const ContactList = () => {
   const contacts = useSelector(selectFilteredContacts);
@@ -23,6 +24,7 @@ export const ContactList = () => {
           </ItemButton>
         </ListItem>
       ))}
+      {contacts && contacts.length === 0 && <EmptyMessage />}
     </List>
   );
 };

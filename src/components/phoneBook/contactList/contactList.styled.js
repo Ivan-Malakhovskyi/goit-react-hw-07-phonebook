@@ -47,3 +47,21 @@ export const ItemButton = styled.button`
     background-color: ${({ theme: { colors } }) => colors.red};
   }
 `;
+
+export const MessageWrapper = styled.div`
+  margin: 0 auto;
+`;
+
+export const Message = styled.p`
+  padding: 10px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.33;
+  letter-spacing: -0.36px;
+`;
+
+export const IconMessage = styled.img`
+  padding: 40px 0;
+`;
