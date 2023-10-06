@@ -26,9 +26,6 @@ export const App = () => {
 
       <Title>Contacts</Title>
 
-      <Filter />
-
-      <ContactList />
       {isLoading && !error && (
         <p
           style={{
@@ -36,9 +33,14 @@ export const App = () => {
             fontWeight: 'bold',
           }}
         >
-          Request in progress...
+          Завантажуємо дані👌...
         </p>
       )}
+
+      <Filter />
+
+      <ContactList />
+
       <GlobalStyle />
     </Layout>
   );

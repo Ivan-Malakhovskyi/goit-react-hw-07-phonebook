@@ -40,4 +40,17 @@ export const deleteContact = createAsyncThunk(
     }
   }
 );
+
+export const changeValueFilter = createAsyncThunk(
+  'filter/changeValueFilter',
+  async (task, thunkAPI) => {
+    try {
+      const response = await axios.patch(`contacts/${task.id}`);
+      return response.data;
+    } catch (error) {
+      thunkAPI.fulfillWithValue(error.message);
+    }
+  }
+);
+
 //* middleWears - функція, прослойка - 7 модуль 1 зайняття
