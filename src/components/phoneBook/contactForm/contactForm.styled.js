@@ -46,6 +46,7 @@ export const FieldForm = styled(Field)`
 `;
 
 export const Buttons = styled.button`
+
   display: flex;
   justify-content: center;
   align-items: center;
