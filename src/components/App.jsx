@@ -1,13 +1,13 @@
-import { GlobalStyle } from 'GlobalStyle';
-import { Layout } from 'Layout';
-import { Filter } from './phoneBook/contactFilter/conatactFilter';
-import { MainTitle, Title } from './phoneBook/contactList/contactList.styled';
-import { FormUser } from './phoneBook/contactForm/contactForm';
-import { ContactList } from './phoneBook/contactList/contactList';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectError, selectIsLoading } from 'redux/selectors';
 import { useEffect } from 'react';
 import { serviceContacts } from 'redux/operations';
+import { GlobalStyle } from 'GlobalStyle';
+import { Layout } from 'Layout';
+import { ContactFilter } from './phoneBook/ContactFilter';
+import { MainTitle, Title } from './phoneBook/ContactList/contactList.styled';
+import { CreateContactForm } from './phoneBook/ContactForm';
+import { ContactList } from './phoneBook/ContactList';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export const App = () => {
     <Layout>
       <MainTitle>Phone book</MainTitle>
 
-      <FormUser />
+      <CreateContactForm />
 
       <Title>Contacts</Title>
 
@@ -37,7 +37,7 @@ export const App = () => {
         </p>
       )}
 
-      <Filter />
+      <ContactFilter />
 
       <ContactList />
 

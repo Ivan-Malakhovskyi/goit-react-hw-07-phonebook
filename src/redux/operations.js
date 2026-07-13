@@ -1,10 +1,8 @@
-//! middleWears - функція, прослойка - 7 модуль 1 зайняття
-
 import axios from 'axios';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://65c8a071a4fbc162e111f364.mockapi.io'
+axios.defaults.baseURL = 'https://6a4e600de785c9ef536cbd48.mockapi.io/';
 
 export const serviceContacts = createAsyncThunk(
   'contacts/serviceAll',
