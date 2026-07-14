@@ -1,16 +1,19 @@
 import * as yup from 'yup';
+import toast, { Toaster } from 'react-hot-toast';
 import {
   Main,
-  ContactForm,
   LabelForm,
   FieldForm,
   ErrorMsg,
   Buttons,
-} from './contactForm.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
-import toast, { Toaster } from 'react-hot-toast';
-import { addContact } from 'redux/operations';
+} from './ContactForm.styled';
+
+import {
+  useCreateContactMutation,
+  useGetContactsQuery,
+} from 'redux/contactsSlice';
+import { Spinner } from 'components/Shared/Spiner';
+import { ContactCreateForm } from './ContactForm.styled';
 
 const schema = yup.object().shape({
   name: yup
@@ -28,10 +31,9 @@ const schema = yup.object().shape({
     .required(),
 });
 
-export const CreateContactForm = () => {
-  const contacts = useSelector(selectContacts);
-
-  const dispatch = useDispatch();
+export const ContactForm = () => {
+  const [addContact, { isLoading, isError }] = useCreateContactMutation();
+  const { data: contacts } = useGetContactsQuery();
 
   const handleSubmit = (values, { resetForm }) => {
     const { name, phone } = values;
@@ -46,7 +48,12 @@ export const CreateContactForm = () => {
       return;
     }
 
-    dispatch(addContact({ name, phone }));
+    if (isError) {
+      toast.error('Some error');
+      return;
+    }
+
+    addContact({ name, phone });
 
     toast.success(`${name} has succesfully added to your phonebook`);
     resetForm();
@@ -58,7 +65,7 @@ export const CreateContactForm = () => {
       validationSchema={schema}
       onSubmit={handleSubmit}
     >
-      <ContactForm>
+      <ContactCreateForm>
         <LabelForm htmlFor="name">
           Name
           <FieldForm
@@ -75,9 +82,11 @@ export const CreateContactForm = () => {
           <FieldForm type="tel" name="phone" required />
           <ErrorMsg name="phone" component="p" />
         </LabelForm>
-        <Buttons type="submit">Add to contact</Buttons>
+        <Buttons type="submit" disabled={isLoading}>
+          {isLoading ? <Spinner width={16} height={16} /> : 'Create'}
+        </Buttons>
         <Toaster />
-      </ContactForm>
+      </ContactCreateForm>
     </Main>
   );
 };
