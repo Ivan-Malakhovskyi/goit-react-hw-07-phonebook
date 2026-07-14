@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 import {
   Main,
-  ContactForm,
+  ContactCreateForm,
   LabelForm,
   FieldForm,
   ErrorMsg,
@@ -28,7 +28,7 @@ const schema = yup.object().shape({
     .required(),
 });
 
-export const CreateContactForm = () => {
+export const ContactForm = () => {
   const contacts = useSelector(selectContacts);
 
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ export const CreateContactForm = () => {
       validationSchema={schema}
       onSubmit={handleSubmit}
     >
-      <ContactForm>
+      <ContactCreateForm>
         <LabelForm htmlFor="name">
           Name
           <FieldForm
@@ -77,7 +77,7 @@ export const CreateContactForm = () => {
         </LabelForm>
         <Buttons type="submit">Add to contact</Buttons>
         <Toaster />
-      </ContactForm>
+      </ContactCreateForm>
     </Main>
   );
 };

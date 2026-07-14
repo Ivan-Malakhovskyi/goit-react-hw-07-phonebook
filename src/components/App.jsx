@@ -6,7 +6,7 @@ import { GlobalStyle } from 'GlobalStyle';
 import { Layout } from 'Layout';
 import { ContactFilter } from './phoneBook/ContactFilter';
 import { MainTitle, Title } from './phoneBook/ContactList/contactList.styled';
-import { CreateContactForm } from './phoneBook/ContactForm';
+import { ContactForm } from './phoneBook/ContactForm';
 import { ContactList } from './phoneBook/ContactList';
 
 export const App = () => {
@@ -22,7 +22,7 @@ export const App = () => {
     <Layout>
       <MainTitle>Phone book</MainTitle>
 
-      <CreateContactForm />
+      <ContactForm />
 
       <Title>Contacts</Title>
 

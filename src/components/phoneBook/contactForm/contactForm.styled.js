@@ -7,7 +7,7 @@ export const Main = styled(Formik)`
   color: ${({ theme: { colors } }) => colors.red};
 `;
 
-export const ContactForm = styled(Form)`
+export const ContactCreateForm = styled(Form)`
   display: flex;
   flex-flow: column;
   gap: 16px;
@@ -18,15 +18,14 @@ export const ContactForm = styled(Form)`
 `;
 
 export const LabelForm = styled.label`
-
-color: ${({ theme: { colors } }) => colors.black};
-margin: 0;
-margin-bottom: 16px
-font-size: 14px;
-font-style: normal;
-font-weight: 700;
-line-height: 1.33; 
-letter-spacing: -0.18px;
+  color: ${({ theme: { colors } }) => colors.black};
+  margin: 0;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.33;
+  letter-spacing: -0.18px;
 `;
 
 export const ErrorMsg = styled(ErrorMessage)`
@@ -46,7 +45,6 @@ export const FieldForm = styled(Field)`
 `;
 
 export const Buttons = styled.button`
-
   display: flex;
   justify-content: center;
   align-items: center;
