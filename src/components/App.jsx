@@ -5,9 +5,9 @@ import { serviceContacts } from 'redux/operations';
 import { GlobalStyle } from 'GlobalStyle';
 import { Layout } from 'Layout';
 import { ContactFilter } from './phoneBook/ContactFilter';
-import { MainTitle, Title } from './phoneBook/ContactList/ContactList.styled';
-import { ContactForm } from './phoneBook/ContactForm';
 import { ContactList } from './phoneBook/ContactList';
+import { ContactForm } from './phoneBook/ContactForm';
+import { MainTitle, Title } from './phoneBook/ContactList/ContactList.styled';
 
 export const App = () => {
   const dispatch = useDispatch();
