@@ -4,10 +4,10 @@ import { useEffect } from 'react';
 import { serviceContacts } from 'redux/operations';
 import { GlobalStyle } from 'GlobalStyle';
 import { Layout } from 'Layout';
-import { ContactFilter } from './phoneBook/ContactFilter/ContactFilter';
+import { ContactFilter } from './phoneBook/ContactFilter';
 import { MainTitle, Title } from './phoneBook/ContactList/ContactList.styled';
-import { ContactForm } from './phoneBook/ContactForm/ContactForm';
-import { ContactList } from './phoneBook/ContactList/ContactList';
+import { ContactForm } from './phoneBook/ContactForm';
+import { ContactList } from './phoneBook/ContactList';
 
 export const App = () => {
   const dispatch = useDispatch();

@@ -1,4 +1,8 @@
 import * as yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import toast, { Toaster } from 'react-hot-toast';
+import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
 import {
   Main,
   ContactCreateForm,
@@ -7,10 +11,6 @@ import {
   ErrorMsg,
   Buttons,
 } from './contactForm.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
-import toast, { Toaster } from 'react-hot-toast';
-import { addContact } from 'redux/operations';
 
 const schema = yup.object().shape({
   name: yup
