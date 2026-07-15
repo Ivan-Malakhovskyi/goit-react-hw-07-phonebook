@@ -4,7 +4,7 @@ import {
   LabelContacts,
   Search,
   ResetButtons,
-} from './ContactFilter.styled';
+} from './contactFilter.styled';
 import { selectFilter } from 'redux/selectors';
 import { changeValueFilter } from 'redux/filterSlice';
 

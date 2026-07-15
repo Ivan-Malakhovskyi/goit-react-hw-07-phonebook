@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { List, ListItem, Topic, ItemButton } from './ContactList.styled';
+import { List, ListItem, Topic, ItemButton } from './contactList.styled';
 import { selectFilteredContacts } from 'redux/selectors';
 import { deleteContact } from 'redux/operations';
 import { EmptyMessage } from './EmptyMessage';

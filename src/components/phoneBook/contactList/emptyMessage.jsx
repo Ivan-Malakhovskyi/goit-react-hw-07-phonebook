@@ -1,4 +1,4 @@
-import { IconMessage, Message, MessageWrapper } from './ContactList.styled';
+import { IconMessage, Message, MessageWrapper } from './contactList.styled';
 
 export const EmptyMessage = () => {
   const emptyImg =
