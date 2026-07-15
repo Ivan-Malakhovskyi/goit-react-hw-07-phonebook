@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 import { serviceContacts } from 'redux/operations';
 import { GlobalStyle } from 'GlobalStyle';
 import { Layout } from 'Layout';
-import { ContactFilter } from './phoneBook/ContactFilter';
-import { ContactList } from './phoneBook/ContactList';
-import { ContactForm } from './phoneBook/ContactForm';
+import { ContactFilter } from './phoneBook/ContactFilter/ContactFilter';
+import { ContactList } from './phoneBook/ContactList/ContactList';
+import { ContactForm } from './phoneBook/ContactForm/ContactForm';
 import { MainTitle, Title } from './phoneBook/ContactList/ContactList.styled';
 
 export const App = () => {
