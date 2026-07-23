@@ -13,9 +13,9 @@ export const App = () => {
 
       <ContactForm />
 
-      <Contacts />
-
       <ContactFilter />
+
+      <Contacts />
 
       <GlobalStyle />
     </Layout>

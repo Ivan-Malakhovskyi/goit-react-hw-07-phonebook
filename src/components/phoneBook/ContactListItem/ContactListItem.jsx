@@ -2,7 +2,7 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { useDeleteContactMutation } from 'redux/contactsSlice';
 import { ListItem, Topic, ItemButton } from './ContactListItem.styled';
-import { Spinner } from 'components/Shared/Spiner';
+import { Spinner } from 'components/Shared/Spinner';
 
 export const ContactListItem = ({ id, name, phone }) => {
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();

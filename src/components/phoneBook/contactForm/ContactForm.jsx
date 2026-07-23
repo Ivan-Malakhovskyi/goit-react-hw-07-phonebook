@@ -6,14 +6,14 @@ import {
   FieldForm,
   ErrorMsg,
   Buttons,
-} from './ContactForm.styled';
+  ContactCreateForm,
+} from './contactForm.styled';
 
 import {
   useCreateContactMutation,
   useGetContactsQuery,
 } from 'redux/contactsSlice';
-import { Spinner } from 'components/Shared/Spiner';
-import { ContactCreateForm } from './ContactForm.styled';
+import { Spinner } from 'components/Shared/Spinner';
 
 const schema = yup.object().shape({
   name: yup
