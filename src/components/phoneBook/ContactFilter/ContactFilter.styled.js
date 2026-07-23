@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-export const ContactsWrapper = styled.div`
-  margin-bottom: 20px;
-  margin-top: 20px;
-`;
-
 export const LabelForm = styled.label`
   color: ${({ theme: { colors } }) => colors.black};
   margin: 0;
@@ -48,4 +43,8 @@ export const LabelContacts = styled.label`
   line-height: 1.33; /* 133.333% */
   letter-spacing: -0.18px;
   text-transform: uppercase;
+`;
+
+export const FilterTitle = styled.h2`
+  margin-bottom: 20px;
 `;

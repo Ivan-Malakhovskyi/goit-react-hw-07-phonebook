@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  ContactsWrapper,
   LabelContacts,
   Search,
   ResetButtons,
-} from './contactFilter.styled';
+  FilterTitle,
+} from './ContactFilter.styled';
 import { selectFilter } from 'redux/selectors';
 import { changeValueFilter } from 'redux/filterSlice';
+import { Section } from 'components/Shared/Shared.styled';
 
 export const ContactFilter = () => {
   const filter = useSelector(selectFilter);
@@ -21,7 +22,10 @@ export const ContactFilter = () => {
   };
 
   return (
-    <ContactsWrapper>
+    <Section>
+      <FilterTitle>Filter contacts</FilterTitle>
+
+      {/* <ContactsWrapper> */}
       <LabelContacts>
         Find contacts by name
         <Search
@@ -34,6 +38,6 @@ export const ContactFilter = () => {
           Reset filters
         </ResetButtons>
       </LabelContacts>
-    </ContactsWrapper>
+    </Section>
   );
 };

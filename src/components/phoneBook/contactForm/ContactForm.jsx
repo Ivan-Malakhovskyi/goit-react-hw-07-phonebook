@@ -1,16 +1,19 @@
 import * as yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
 import toast, { Toaster } from 'react-hot-toast';
-import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
 import {
   Main,
-  ContactCreateForm,
   LabelForm,
   FieldForm,
   ErrorMsg,
   Buttons,
+  ContactCreateForm,
 } from './contactForm.styled';
+
+import {
+  useCreateContactMutation,
+  useGetContactsQuery,
+} from 'redux/contactsSlice';
+import { Spinner } from 'components/Shared/Spinner';
 
 const schema = yup.object().shape({
   name: yup
@@ -29,9 +32,8 @@ const schema = yup.object().shape({
 });
 
 export const ContactForm = () => {
-  const contacts = useSelector(selectContacts);
-
-  const dispatch = useDispatch();
+  const [addContact, { isLoading, isError }] = useCreateContactMutation();
+  const { data: contacts } = useGetContactsQuery();
 
   const handleSubmit = (values, { resetForm }) => {
     const { name, phone } = values;
@@ -46,7 +48,12 @@ export const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact({ name, phone }));
+    if (isError) {
+      toast.error('Some error');
+      return;
+    }
+
+    addContact({ name, phone });
 
     toast.success(`${name} has succesfully added to your phonebook`);
     resetForm();
@@ -75,7 +82,9 @@ export const ContactForm = () => {
           <FieldForm type="tel" name="phone" required />
           <ErrorMsg name="phone" component="p" />
         </LabelForm>
-        <Buttons type="submit">Add to contact</Buttons>
+        <Buttons type="submit" disabled={isLoading}>
+          {isLoading ? <Spinner width={16} height={16} /> : 'Create'}
+        </Buttons>
         <Toaster />
       </ContactCreateForm>
     </Main>
