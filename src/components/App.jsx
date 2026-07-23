@@ -1,8 +1,10 @@
 import { GlobalStyle } from 'GlobalStyle';
 import { Layout } from 'Layout';
-import { ContactForm, Contacts, ContactFilter } from './phoneBook';
+import { ContactForm } from './phoneBook/ContactForm';
+import { ContactFilter } from './phoneBook/ContactFilter';
+import { Contacts } from './phoneBook/Contacts';
 import { MainTitle } from './phoneBook/Contacts/ContactList.styled';
-import { Pokemons } from './Pokemons/Pokemons';
+import { Pokemons } from './Pokemons';
 
 export const App = () => {
   return (
