@@ -1,48 +1,36 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { addContact, deleteContact, serviceContacts } from './operations';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const handelPending = state => {
-  state.isLoading = true;
-};
-
-const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
-
-const contactsSlice = createSlice({
-  name: 'contacts',
-  initialState: {
-    items: [],
-    isLoading: false,
-    error: null,
-  },
-  extraReducers: builder => {
-    builder
-      .addCase(serviceContacts.pending, handelPending)
-      .addCase(serviceContacts.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items = action.payload;
-      })
-      .addCase(serviceContacts.rejected, handleRejected)
-      .addCase(addContact.pending, handelPending)
-      .addCase(addContact.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items.push(action.payload);
-      })
-      .addCase(addContact.rejected, handleRejected)
-      .addCase(deleteContact.pending, handelPending)
-      .addCase(deleteContact.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items = state.items.filter(
-          contact => contact.id !== action.payload.id
-        );
-      })
-      .addCase(deleteContact.rejected, handleRejected);
-  },
+export const contactsApi = createApi({
+  reducerPath: 'contactsApi',
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'https://6a4e600de785c9ef536cbd48.mockapi.io',
+  }),
+  tagTypes: ['Contacts'],
+  endpoints: builder => ({
+    getContacts: builder.query({
+      query: () => `/contacts`,
+      providesTags: ['Contacts'],
+    }),
+    deleteContact: builder.mutation({
+      query: id => ({
+        url: `/contacts/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
+    createContact: builder.mutation({
+      query: newContact => ({
+        url: `/contacts`,
+        method: 'POST',
+        body: newContact,
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
+  }),
 });
 
-export const contactsReducer = contactsSlice.reducer;
+export const {
+  useGetContactsQuery,
+  useDeleteContactMutation,
+  useCreateContactMutation,
+} = contactsApi;

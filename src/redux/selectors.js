@@ -16,4 +16,3 @@ export const selectFilteredContacts = createSelector(
     );
   }
 );
-//* Всі селектори викликаються, коли змінюється шматок стану redux
