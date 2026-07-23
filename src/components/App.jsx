@@ -1,8 +1,8 @@
 import { GlobalStyle } from 'GlobalStyle';
 import { Layout } from 'Layout';
-import { ContactForm } from './phoneBook/ContactForm';
-import { ContactFilter } from './phoneBook/ContactFilter';
-import { Contacts } from './phoneBook/Contacts';
+import { ContactForm } from './phoneBook/ContactForm/ContactForm';
+import { ContactFilter } from './phoneBook/ContactFilter/ContactFilter';
+import { Contacts } from './phoneBook/Contacts/Contacts';
 import { MainTitle } from './phoneBook/Contacts/ContactList.styled';
 import { Pokemons } from './Pokemons';
 
